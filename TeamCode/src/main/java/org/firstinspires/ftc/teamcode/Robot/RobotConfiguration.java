@@ -45,7 +45,7 @@ public abstract class RobotConfiguration extends LinearOpMode {
     protected PincerSystem pincers = null;
     protected PivotSystem pivotJoint = null;
     protected SlideSystem slideSys = null;
-    protected WristSystem wristJoint = null;
+//    protected WristSystem wristJoint = null;
     protected DroneSystem drone = null;
 //    protected ClimberSystem climb = null;
     /* keyword 'protected' is similar to 'private'. Private variables are only accessible within the
@@ -92,7 +92,7 @@ public abstract class RobotConfiguration extends LinearOpMode {
         pincers    = new PincerSystem(leftPincer, rightPincer);
         pivotJoint = new PivotSystem(armPivotMotor);
         slideSys   = new SlideSystem(armSlideMotor);
-        wristJoint = new WristSystem(wristServo);
+//        wristJoint = new WristSystem(wristServo);
         drone      = new DroneSystem(droneServo);
 //        climb      = new ClimberSystem(climberServo);
         vision = new VisionPortalObject(webCam);
