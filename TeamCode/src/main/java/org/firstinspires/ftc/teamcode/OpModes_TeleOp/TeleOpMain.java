@@ -31,7 +31,6 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
     public void runOpMode() throws InterruptedException {
 
         initializeRobot();
-        boolean climbInProcess = false;
 
         pivotJoint.resetEncoder();
         slideSys.resetEncoder();
@@ -70,17 +69,19 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
             if(gp1.left_bumper && gp1.x) drone.launchDrone();
             if(gp1.left_bumper && gp1.y) drone.resetDroneLauncher();
 
-            /* Climber System Commands */
-//            if(gp1.a) climb.disable();
-//            if(gp1.b) climb.enable();
-
             /* Check if preset movements have finished */
-            if(slideSys.motionFinished() & pivotJoint.motionFinished() | presetOverride.state()) {
+            if(slideSys.motionFinished() & pivotJoint.motionFinished() || presetOverride.state()) {
                 presetMotionInProgress = false;
             }
 
             slideSys.update();
             pivotJoint.update();
+
+            /* Add any Telemetry Items Here */
+            telemetry.addData("Pivot Encoder Value: ", pivotJoint.getPivotPos());
+            telemetry.addData("Slide Encoder Value: ", slideSys.getSlidePos());
+            telemetry.addData("Wrist Encoder Value: ", wristJoint.getServoPos());
+            telemetry.update();
         }
     }
 
