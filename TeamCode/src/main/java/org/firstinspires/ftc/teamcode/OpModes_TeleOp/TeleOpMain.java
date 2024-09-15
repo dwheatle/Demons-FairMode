@@ -44,10 +44,6 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
             /* Move Robot? */
             drive.mecanumDrive(-gp1.left_stick_y, gp1.left_stick_x, gp1.right_stick_x, degradedDriveMode.state());;
 
-            /* Move Wrist? */
-            if(wristUp.state())   wristJoint.jog(WristSystem.Jog.WRIST_UP);
-            if(wristDown.state()) wristJoint.jog(WristSystem.Jog.WRIST_DOWN);
-
             /* Toggle Pincers? */
             if(leftPincerToggle.state())  { pincers.toggleLeftPincer();  }
             if(rightPincerToggle.state()) { pincers.toggleRightPincer(); }
@@ -58,6 +54,10 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
 
                 /* Jog Pivot Motor? */
                 pivotJoint.jog(gp2.left_stick_y);
+
+                /* Move Wrist? */
+                if(wristUp.state())   wristJoint.jog(WristSystem.Jog.WRIST_UP);
+                if(wristDown.state()) wristJoint.jog(WristSystem.Jog.WRIST_DOWN);
             }
 
             /* Move Robot to Preset Configurations */
