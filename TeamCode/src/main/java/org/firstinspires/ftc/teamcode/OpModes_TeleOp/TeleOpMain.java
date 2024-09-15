@@ -56,8 +56,8 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
                 pivotJoint.jog(gp2.left_stick_y);
 
                 /* Move Wrist? */
-                if(wristUp.state())   wristJoint.jog(WristSystem.Jog.WRIST_UP);
-                if(wristDown.state()) wristJoint.jog(WristSystem.Jog.WRIST_DOWN);
+//                if(wristUp.state())   wristJoint.jog(WristSystem.Jog.WRIST_UP);
+//                if(wristDown.state()) wristJoint.jog(WristSystem.Jog.WRIST_DOWN);
             }
 
             /* Move Robot to Preset Configurations */
@@ -80,7 +80,7 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
             /* Add any Telemetry Items Here */
             telemetry.addData("Pivot Encoder Value: ", pivotJoint.getPivotPos());
             telemetry.addData("Slide Encoder Value: ", slideSys.getSlidePos());
-            telemetry.addData("Wrist Encoder Value: ", wristJoint.getServoPos());
+//            telemetry.addData("Wrist Encoder Value: ", wristJoint.getServoPos());
             telemetry.update();
         }
     }
@@ -117,7 +117,7 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
         presetMotionInProgress = true;
         pivotJoint.moveToCountPosition(828, 0.5);
         slideSys.moveToCountPosition(50, 0.5);
-        wristJoint.setPosition(0.95);
+//        wristJoint.setPosition(0.95);
     }
 
 
@@ -127,7 +127,7 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
     private void pickupFloorPixel() {
         presetMotionInProgress = true;
         pivotJoint.moveToCountPosition(PIVOT_FLOOR_PICKUP, 0.5);
-        wristJoint.setPosition(WRIST_FLOOR_PICKUP);
+//        wristJoint.setPosition(WRIST_FLOOR_PICKUP);
         slideSys.moveToCountPosition(SLIDE_FLOOR_PICKUP, 0.5);
     }
 
@@ -138,7 +138,7 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
     private void scoreLowPosition() {
         presetMotionInProgress = true;
         pivotJoint.moveToCountPosition(PIVOT_SCORE_LOW, 0.5);
-        wristJoint.setPosition(WRIST_SCORE_LOW);
+//        wristJoint.setPosition(WRIST_SCORE_LOW);
         slideSys.moveToCountPosition(SLIDE_FLOOR_PICKUP, 0.5);
     }
 }

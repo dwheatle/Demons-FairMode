@@ -39,6 +39,7 @@ public abstract class RobotConfiguration extends LinearOpMode {
     that extend this class will have the same value for 'alliance'. This allows the value to persist
     through autonomous and teleOp modes */
 
+
     /*----------- Define all Module Classes (SubSystems) -----------*/
     protected MecanumDrive drive = null;
     protected VisionPortalObject vision = null;
@@ -51,6 +52,7 @@ public abstract class RobotConfiguration extends LinearOpMode {
     /* keyword 'protected' is similar to 'private'. Private variables are only accessible within the
     scope of this class. Protected allows for all classes that extend or inherit from this class to
     directly access the variables, objects and methods. */
+
 
     /**
      * initializeRobot:
