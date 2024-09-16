@@ -4,39 +4,50 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Cogintilities.Buttons.MomentaryButton;
 
-
+/**
+ * This class provides a wrapper around the gamepad class to allow for extra functionality of the
+ * buttons and joysticks. By default, all buttons are modified to be objects of the MomentaryButton
+ * class. If a different behavior is desired, make the necessary changes below..
+ */
 public class GamepadWrapper {
 
     private final Gamepad gp;
 
     double leftStick_X, leftStick_Y, rightStick_X, rightStick_Y, leftTrigger, rightTrigger;
     Boolean A,B,X,Y,dpad_up,dpad_down,dpad_left,dpad_right,left_bumper, right_bumper, back, start, guide;
-    MomentaryButton btnA, btnB, btnX, btnY,
-                    btnDpadUp, btnDpadDown, btnDpadLeft, btnDpadRight,
-                    btnLbumper, btnRbumper,
-                    btnBack, btnStart, btnGuide;
 
+    /* Change button behavior here if needed */
+    MomentaryButton btnA = new MomentaryButton(false,false);
+    MomentaryButton btnB = new MomentaryButton(false,false);
+    MomentaryButton btnX = new MomentaryButton(false,false);
+    MomentaryButton btnY = new MomentaryButton(false,false);
+
+    MomentaryButton btnDpadUp    = new MomentaryButton(false,false);
+    MomentaryButton btnDpadDown  = new MomentaryButton(false,false);
+    MomentaryButton btnDpadLeft  = new MomentaryButton(false,false);
+    MomentaryButton btnDpadRight = new MomentaryButton(false,false);
+
+    MomentaryButton btnLbumper = new MomentaryButton(false,false);
+    MomentaryButton btnRbumper = new MomentaryButton(false,false);
+
+    MomentaryButton btnBack  = new MomentaryButton(false,false);
+    MomentaryButton btnStart = new MomentaryButton(false,false);
+    MomentaryButton btnGuide = new MomentaryButton(false,false);;
+
+    /**
+     * Constructor
+     * Creates a gamepad wrapper object.
+     * @param gamepad Gamepad whose buttons are to be modified.
+     */
     public GamepadWrapper(Gamepad gamepad) {
         gp = gamepad;
-
-        btnA = new MomentaryButton(false,false);
-        btnB = new MomentaryButton(false,false);
-        btnX = new MomentaryButton(false,false);
-        btnY = new MomentaryButton(false,false);
-
-        btnDpadUp    = new MomentaryButton(false,false);
-        btnDpadDown  = new MomentaryButton(false,false);
-        btnDpadLeft  = new MomentaryButton(false,false);
-        btnDpadRight = new MomentaryButton(false,false);
-
-        btnLbumper = new MomentaryButton(false,false);
-        btnRbumper = new MomentaryButton(false,false);
-
-        btnBack   = new MomentaryButton(false,false);
-        btnStart  = new MomentaryButton(false,false);
-        btnGuide  = new MomentaryButton(false,false);
     }
 
+
+    /**
+     * This function calls the update function for all of the button objects. It should be called
+     * once per loop in the opMode's runOpMode function.
+     */
     public void update() {
         btnA.update(gp.a);
         btnB.update(gp.b);
@@ -52,6 +63,14 @@ public class GamepadWrapper {
         btnStart.update(gp.start);
         btnGuide.update(gp.guide);
 
+        updateVars();
+    }
+
+
+    /**
+     * Update the values of the buttons and joysticks.
+     */
+    private void updateVars() {
         /* Assign Values */
         leftStick_X = gp.left_stick_x;
         leftStick_Y = gp.left_stick_y;
