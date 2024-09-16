@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode.SubSytems;
 
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.Robot.TeamConstants;
+import org.firstinspires.ftc.teamcode.TeamConstants;
 
 public class PincerSystem implements TeamConstants {
 

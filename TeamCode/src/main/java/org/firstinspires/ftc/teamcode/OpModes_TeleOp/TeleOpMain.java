@@ -1,12 +1,10 @@
 package org.firstinspires.ftc.teamcode.OpModes_TeleOp;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Cogintilities.GamepadWrapper.GamepadWrapper;
-import org.firstinspires.ftc.teamcode.Robot.RobotConfiguration;
-import org.firstinspires.ftc.teamcode.Robot.TeamConstants;
-import org.firstinspires.ftc.teamcode.SubSytems.WristSystem;
+import org.firstinspires.ftc.teamcode.RobotConfiguration;
+import org.firstinspires.ftc.teamcode.TeamConstants;
 
 /* Ensure that the robot is physically in the initialize position. Slide and Pivot encoders will
 be reset upon OpMode initialization.

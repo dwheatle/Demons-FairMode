@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.teamcode.SubSytems;
 
 import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.ServoImplEx;
 
-import org.firstinspires.ftc.teamcode.Robot.TeamConstants;
+import org.firstinspires.ftc.teamcode.TeamConstants;
 
 public class DroneSystem implements TeamConstants {
 

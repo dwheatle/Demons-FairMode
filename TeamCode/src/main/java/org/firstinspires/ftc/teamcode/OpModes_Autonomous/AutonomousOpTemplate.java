@@ -3,8 +3,8 @@ package org.firstinspires.ftc.teamcode.OpModes_Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-import org.firstinspires.ftc.teamcode.Robot.RobotConfiguration;
-import org.firstinspires.ftc.teamcode.Robot.TeamConstants;
+import org.firstinspires.ftc.teamcode.RobotConfiguration;
+import org.firstinspires.ftc.teamcode.TeamConstants;
 
 @Disabled
 @Autonomous(name="AutoTeamColorDescriptor", group="Autonomous")
