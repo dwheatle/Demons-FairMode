@@ -30,8 +30,8 @@ public class PincerSystem implements TeamConstants {
         leftPincer.setDirection(Servo.Direction.REVERSE);
         rightPincer.setDirection(Servo.Direction.FORWARD);
 
-        left_pos = PincerState.CLOSED;
-        right_pos = PincerState.CLOSED;
+        left_pos = PincerState.OPEN;
+        right_pos = PincerState.OPEN;
 
     }
 

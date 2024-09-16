@@ -45,8 +45,8 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
             drive.mecanumDrive(-gp1.left_stick_y, gp1.left_stick_x, gp1.right_stick_x, degradedDriveMode.state());;
 
             /* Toggle Pincers? */
-            if(leftPincerToggle.state())  { pincers.toggleLeftPincer();  }
-            if(rightPincerToggle.state()) { pincers.toggleRightPincer(); }
+            if(leftPincerToggle.state())  pincers.toggleLeftPincer();
+            if(rightPincerToggle.state()) pincers.toggleRightPincer();
 
             if(!presetMotionInProgress) {
                 /* Jog Slide? */
