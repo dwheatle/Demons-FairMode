@@ -13,8 +13,9 @@ public class PincerSystem implements TeamConstants {
         CLOSED
     };
 
-    PincerState left_pos = PincerState.OPEN;
-    PincerState right_pos = PincerState.OPEN;
+    PincerState left_pos;
+    PincerState right_pos;
+
 
     /**
      * Constructor: Creates an object to control the pixel pincers.
@@ -35,6 +36,7 @@ public class PincerSystem implements TeamConstants {
 
     }
 
+
     /**
      * Toggles the Left Pincer
      */
@@ -51,6 +53,7 @@ public class PincerSystem implements TeamConstants {
                 break;
         }
     }
+
 
     /**
      * Toggles the right pincer
@@ -69,6 +72,7 @@ public class PincerSystem implements TeamConstants {
         }
     }
 
+
     /**
      * Open both pincers
      */
@@ -80,6 +84,7 @@ public class PincerSystem implements TeamConstants {
         left_pos = PincerState.OPEN;
         right_pos = PincerState.OPEN;
     }
+
 
     /**
      * Close both pincers
