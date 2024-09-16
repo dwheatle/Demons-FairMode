@@ -42,7 +42,7 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
             updateControls(gamepad1, gamepad2);
 
             /* Move Robot? */
-            drive.mecanumDrive(-gp1.left_stick_y, gp1.left_stick_x, gp1.right_stick_x, degradedDriveMode.state());;
+            drive.mecanumDrive(-gp1.left_stick_y, gp1.left_stick_x, gp1.right_stick_x, degradedDriveMode.state());
 
             /* Toggle Pincers? */
             if(leftPincerToggle.state())  pincers.toggleLeftPincer();
