@@ -13,8 +13,8 @@ public class GamepadWrapper {
 
     private final Gamepad gp;
 
-    double leftStick_X, leftStick_Y, rightStick_X, rightStick_Y, leftTrigger, rightTrigger;
-    Boolean A,B,X,Y,dpad_up,dpad_down,dpad_left,dpad_right,left_bumper, right_bumper, back, start, guide;
+    public double leftStick_X, leftStick_Y, rightStick_X, rightStick_Y, leftTrigger, rightTrigger;
+    public Boolean A,B,X,Y,dpad_up,dpad_down,dpad_left,dpad_right,left_bumper, right_bumper, back, start, guide;
 
     /* Change button behavior here if needed */
     MomentaryButton btnA = new MomentaryButton(false,false);
