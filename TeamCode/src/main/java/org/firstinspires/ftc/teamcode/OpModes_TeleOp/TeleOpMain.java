@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Cogintilities.Buttons.MomentaryButton;
+import org.firstinspires.ftc.teamcode.Cogintilities.GamepadWrapper.GamepadWrapper;
 import org.firstinspires.ftc.teamcode.Robot.RobotConfiguration;
 import org.firstinspires.ftc.teamcode.Robot.TeamConstants;
 import org.firstinspires.ftc.teamcode.SubSytems.WristSystem;
@@ -17,20 +18,14 @@ be reset upon OpMode initialization.
 public class TeleOpMain extends RobotConfiguration implements TeamConstants {
 
     private boolean presetMotionInProgress = false;
-    private Gamepad gp1, gp2;
-
-    private final MomentaryButton leftPincerToggle = new MomentaryButton(false,false);
-    private final MomentaryButton rightPincerToggle = new MomentaryButton(false, false);
-    private final MomentaryButton wristUp = new MomentaryButton(false, false);
-    private final MomentaryButton wristDown = new MomentaryButton(false, false);
-    private final MomentaryButton lowAuto = new MomentaryButton(false, false);
-    private final MomentaryButton degradedDriveMode = new MomentaryButton(false,false);
-    private final MomentaryButton presetOverride = new MomentaryButton(false,false);
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         initializeRobot();
+
+        GamepadWrapper driver   = new GamepadWrapper(gamepad1);
+        GamepadWrapper operator = new GamepadWrapper(gamepad2);
 
         pivotJoint.resetEncoder();
         slideSys.resetEncoder();
@@ -39,38 +34,39 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
 
         while (opModeIsActive()) {
 
-            updateControls(gamepad1, gamepad2);
+            driver.update();
+            operator.update();;
 
             /* Move Robot? */
-            drive.mecanumDrive(-gp1.left_stick_y, gp1.left_stick_x, gp1.right_stick_x, degradedDriveMode.state());
+            drive.mecanumDrive(-driver.leftStick_Y, driver.leftStick_X, driver.rightStick_X, driver.right_bumper);
 
             /* Toggle Pincers? */
-            if(leftPincerToggle.state())  pincers.toggleLeftPincer();
-            if(rightPincerToggle.state()) pincers.toggleRightPincer();
+            if(operator.left_bumper)  pincers.toggleLeftPincer();
+            if(operator.right_bumper) pincers.toggleRightPincer();
 
             if(!presetMotionInProgress) {
                 /* Jog Slide? */
-                slideSys.jog(gp2.right_stick_y);
+                slideSys.jog(operator.rightStick_Y);
 
                 /* Jog Pivot Motor? */
-                pivotJoint.jog(gp2.left_stick_y);
+                pivotJoint.jog(operator.leftStick_Y);
 
                 /* Move Wrist? */
-//                if(wristUp.state())   wristJoint.jog(WristSystem.Jog.WRIST_UP);
-//                if(wristDown.state()) wristJoint.jog(WristSystem.Jog.WRIST_DOWN);
+//                if(operator.dpad_up)   wristJoint.jog(WristSystem.Jog.WRIST_UP);
+//                if(operator.dpad_down) wristJoint.jog(WristSystem.Jog.WRIST_DOWN);
             }
 
             /* Move Robot to Preset Configurations */
-            if(gp2.x) stowForTravel();
-            if(gp2.a) pickupFloorPixel();
-            if(lowAuto.state()) scoreLowPosition();
+            if(operator.X) stowForTravel();
+            if(operator.A) pickupFloorPixel();
+            if(operator.B) scoreLowPosition();
 
             /* Drone Commands */
-            if(gp1.left_bumper && gp1.x) drone.launchDrone();
-            if(gp1.left_bumper && gp1.y) drone.resetDroneLauncher();
+            if(driver.left_bumper && driver.X) drone.launchDrone();
+            if(driver.left_bumper && driver.Y) drone.resetDroneLauncher();
 
             /* Check if preset movements have finished */
-            if(slideSys.motionFinished() & pivotJoint.motionFinished() || presetOverride.state()) {
+            if(slideSys.motionFinished() & pivotJoint.motionFinished() || operator.back) {
                 presetMotionInProgress = false;
             }
 
@@ -83,30 +79,6 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
 //            telemetry.addData("Wrist Encoder Value: ", wristJoint.getServoPos());
             telemetry.update();
         }
-    }
-
-
-    /**
-     * Read GamePad Controls and update any Button objects
-     * @param gamepd1 Gamepad 1 (driver)
-     * @param gamepd2 Gamepad 2 (operator)
-     */
-    private void updateControls(Gamepad gamepd1, Gamepad gamepd2){
-
-        gp1 = gamepd1;
-        gp2 = gamepd2;
-
-        /* Gamepad 1 Buttons */
-        degradedDriveMode.update(gp1.right_bumper);
-
-        /* Gamepad 2 Buttons */
-        leftPincerToggle.update(gp2.left_bumper);
-        rightPincerToggle.update(gp2.right_bumper);
-        wristUp.update(gp2.dpad_up);
-        wristDown.update(gp2.dpad_down);
-        lowAuto.update(gp2.b);
-        presetOverride.update(gp2.back);
-
     }
 
 
