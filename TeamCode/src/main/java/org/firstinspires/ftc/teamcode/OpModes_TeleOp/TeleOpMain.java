@@ -2,9 +2,7 @@ package org.firstinspires.ftc.teamcode.OpModes_TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.teamcode.Cogintilities.Buttons.MomentaryButton;
 import org.firstinspires.ftc.teamcode.Cogintilities.GamepadWrapper.GamepadWrapper;
 import org.firstinspires.ftc.teamcode.Robot.RobotConfiguration;
 import org.firstinspires.ftc.teamcode.Robot.TeamConstants;
@@ -35,7 +33,7 @@ public class TeleOpMain extends RobotConfiguration implements TeamConstants {
         while (opModeIsActive()) {
 
             driver.update();
-            operator.update();;
+            operator.update();
 
             /* Move Robot? */
             drive.mecanumDrive(-driver.leftStick_Y, driver.leftStick_X, driver.rightStick_X, driver.right_bumper);
