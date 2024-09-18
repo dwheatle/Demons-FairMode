@@ -75,11 +75,12 @@ public class SlideSystem implements TeamConstants {
      * @param command
      */
     public void jog(double command) {
+        // Check motion limits prior to setting power
         slideMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         if(command > 0.05 || command < -0.05) {                     // Dead band
             slideMotor.setPower(-0.5 * clampPowerSetpt(command));
         } else {
-            moveToCountPosition(getSlidePos(), 0.25);
+            slideMotor.setPower(0);
         }
     }
 

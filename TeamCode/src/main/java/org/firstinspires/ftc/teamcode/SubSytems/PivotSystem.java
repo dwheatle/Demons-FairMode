@@ -42,7 +42,7 @@ public class PivotSystem implements TeamConstants {
         if(command > 0.05 || command < -0.05) {                     // Dead band
             pivotMotor.setPower(0.6 * clampPowerSetpt(command));
         } else {
-            moveToCountPosition(getPivotPos(), 0.25);
+            pivotMotor.setPower(0);
         }
     }
 
